@@ -56,6 +56,7 @@ void loop()
   digitalWrite(PIN_VENTA, venta ? LOW : HIGH);
 
 #ifdef DHT_DEBUG
+  // need to update
   Serial.print(dht.humidity, 1);
   Serial.print("\t");
   Serial.print(dht.temperature, 1);
@@ -67,51 +68,3 @@ void loop()
   delay(4000);
 }
 
-/*
-void setup()
-{
-  digitalWrite(PIN_VENTA, HIGH);
-  pinMode(PIN_VENTA, OUTPUT);
-
-#ifdef DHT_DEBUG
-  Serial.begin(115200);
-#endif
-}
-
-void loop()
-{
-  int chk = DHT.read22(PIN_DHT);
-  if (chk == DHTLIB_OK) {
-    dht_ok_cnt = 10;
-
-    if (venta) {
-      if (DHT.humidity < HUMIDITY_THRESHOLD_OFF) {
-        venta = false;
-      }
-    } else {
-      if (DHT.humidity > HUMIDITY_THRESHOLD_ON) {
-        venta = true;
-      }
-    }
-  } else {
-    dht_ok_cnt = max(dht_ok_cnt-1, 0);
-    if (!dht_ok_cnt) {
-      // no reading for 10 cycles, turn off venta regardless of its state
-      venta = false;
-    }
-  }
-
-  digitalWrite(PIN_VENTA, venta ? LOW : HIGH);
-
-#ifdef DHT_DEBUG
-  Serial.print(DHT.humidity, 1);
-  Serial.print("\t");
-  Serial.print(DHT.temperature, 1);
-  Serial.print("\t");
-  Serial.print(dht_ok_cnt);
-  Serial.println();
-#endif
-
-  delay(4000);
-}
-*/
